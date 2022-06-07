@@ -6,7 +6,7 @@ from accounts.models import Account
 from store.models import Variation, Product
 # Create your models here.
 class Payment(models.Model):
-    user = models.ForeignKey(Account,on_delete=models.CASCADE)
+    user = models.ForeignKey(Account,on_delete=models.CASCADE,null=True,blank=True)
     payment_id = models.CharField(max_length=100)
 
     payment_method = models.CharField(max_length=100)
@@ -28,7 +28,7 @@ class Order(models.Model):
         ('Cancelled','Cancelled'),
     )
       
-    user = models.ForeignKey(Account,on_delete=models.SET_NULL,null = True)
+    user = models.ForeignKey(Account,on_delete=models.SET_NULL,null = True,blank=True)
   
     payment = models.ForeignKey(Payment,on_delete=models.SET_NULL,blank=True,null = True)
 
@@ -85,7 +85,7 @@ class OrderProduct(models.Model):
 
     payment = models.ForeignKey(Payment,on_delete=models.SET_NULL,blank=True,null=True)
 
-    user = models.ForeignKey(Account,on_delete=models.CASCADE)
+    user = models.ForeignKey(Account,on_delete=models.CASCADE,null=True,blank=True)
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     
     variations = models.ManyToManyField(Variation,blank=True)

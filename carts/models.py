@@ -14,7 +14,7 @@ class Cart(models.Model):
 
 class CartItem(models.Model):
 
-    user = models.ForeignKey(Account,on_delete=models.CASCADE, null=True) #when user is deleted cart item also get deleted
+    user = models.ForeignKey(Account,on_delete=models.CASCADE, null=True,blank=True) #when user is deleted cart item also get deleted
 
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
 
