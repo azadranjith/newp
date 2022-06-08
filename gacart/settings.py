@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'whitenoise.runserver_nostatic',
+    
     'django.contrib.staticfiles',
     'accounts',
     'category',
@@ -53,6 +56,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+     "whitenoise.middleware.WhiteNoiseMiddleware",
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,9 +149,9 @@ STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'gaadmin/static/'),os.path.join(BASE_DIR,'gacart/static')  
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# media file configuration in database
+# media file configuration in database 
 
 MEDIA_URL = '/media/' # path to the directory that will hold user-uploaded files.
 
